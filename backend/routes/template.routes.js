@@ -6,7 +6,7 @@ import {
   updateTemplate,
   deleteTemplate,
 } from "../controllers/template.controller.js";
-import { auth } from "../middlewares/auth.js";
+import { ProtectRoute } from "../middlewares/protectRoute.js";
 
 const router = express.Router();
 

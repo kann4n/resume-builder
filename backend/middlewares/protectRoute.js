@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
 
-export const auth = (req, res, next) => {
+export const ProtectRoute = (req, res, next) => {
     try {
         const token = req.headers.authorization?.split(" ")[1]; // accessing the token from the frontend
 
         if (!token)
-            return res.status(401).json({ message: "No token provided" });
+            return res.status(401).json({success: false, message: "Unauthorized: No token provided" });
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET); // decoding the token
 
