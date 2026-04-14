@@ -1,60 +1,119 @@
+import { Link } from "react-router-dom";
 
+const templates = [
+  {
+    id: "modern",
+    name: "Modern",
+    description: "Balanced layout for product, design, and engineering roles.",
+    accent: "bg-primary",
+    soft: "bg-primary-light",
+    tone: "text-primary",
+    preview: "border-primary",
+  },
+  {
+    id: "classic",
+    name: "Classic",
+    description: "Traditional structure for corporate, finance, and admin roles.",
+    accent: "bg-gray-800",
+    soft: "bg-gray-100",
+    tone: "text-gray-800",
+    preview: "border-gray-800",
+  },
+  {
+    id: "compact",
+    name: "Compact",
+    description: "Dense one-page format for experienced candidates.",
+    accent: "bg-emerald-600",
+    soft: "bg-emerald-50",
+    tone: "text-emerald-700",
+    preview: "border-emerald-600",
+  },
+  {
+    id: "sidebar",
+    name: "Sidebar",
+    description: "Two-column format with skills and contact details up front.",
+    accent: "bg-rose-600",
+    soft: "bg-rose-50",
+    tone: "text-rose-700",
+    preview: "border-rose-600",
+  },
+];
 
 const Templates = () => {
   return (
-    <div className="pt-32 pb-20 min-h-screen bg-surface-alt relative overflow-hidden">
-       {/* Background Blobs for Glassmorphism effect */}
-       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-        <div className="absolute top-[10%] left-[5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[10%] right-[5%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-semibold text-text-main mb-4 tracking-tight">Professional Templates</h1>
-          <p className="text-text-muted max-w-2xl mx-auto font-light">
-            Choose from our collection of ATS-friendly templates designed to help you land your dream job.
-          </p>
+    <div className="min-h-screen bg-surface-alt pt-28 pb-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">
+              Templates
+            </p>
+            <h1 className="text-4xl font-bold tracking-tight text-text-main">
+              Choose a resume layout
+            </h1>
+            <p className="mt-3 max-w-2xl text-text-muted">
+              Pick a starting point, then customize the content in the builder.
+            </p>
+          </div>
+          <Link
+            to="/builder"
+            className="w-fit rounded-lg border border-gray-200 bg-white px-5 py-3 font-semibold text-text-main transition-colors hover:border-primary hover:text-primary"
+          >
+            Open Builder
+          </Link>
         </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-0">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <div key={item} className="group relative glass rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
-              <div className="aspect-[1/1.4] bg-white/50 relative overflow-hidden group-hover:bg-white/80 transition-colors">
-                {/* Abstract Resume Preview - Non-copyrighted */}
-                <div className="w-full h-full p-4 flex flex-col gap-2 opacity-60 group-hover:opacity-80 transition-opacity transform scale-90 group-hover:scale-95 duration-500">
-                   <div className="flex gap-2 items-center mb-2">
-                     <div className="w-8 h-8 rounded-full bg-gray-200"></div>
-                     <div className="space-y-1">
-                       <div className="w-16 h-2 bg-gray-300 rounded-full"></div>
-                       <div className="w-10 h-1.5 bg-gray-200 rounded-full"></div>
-                     </div>
-                   </div>
-                   <div className="w-full h-1.5 bg-gray-200 rounded-full mb-1"></div>
-                   <div className="flex gap-2 h-full">
-                      <div className="w-1/3 h-full bg-gray-100 rounded-lg"></div>
-                      <div className="w-2/3 h-full space-y-2">
-                        <div className="w-full h-2 bg-gray-200 rounded-full"></div>
-                        <div className="w-5/6 h-2 bg-gray-200 rounded-full"></div>
-                        <div className="w-full h-2 bg-gray-200 rounded-full"></div>
-                        <div className="w-4/5 h-2 bg-gray-200 rounded-full"></div>
-                        <div className="mt-4 w-full h-2 bg-gray-200 rounded-full"></div>
-                        <div className="w-3/4 h-2 bg-gray-200 rounded-full"></div>
-                      </div>
-                   </div>
-                </div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                  <button className="px-5 py-2 bg-primary/90 backdrop-blur-sm text-white rounded-full text-sm font-medium hover:bg-primary transition-colors shadow-lg transform translate-y-4 group-hover:translate-y-0 duration-300">
-                    Use Template
-                  </button>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {templates.map((template) => (
+            <article
+              key={template.id}
+              className="group overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className="bg-gray-50 p-4">
+                <div className={`min-h-[330px] rounded-lg border-t-4 ${template.preview} bg-white p-5 shadow-sm`}>
+                  <div className="mb-5 flex items-start justify-between gap-3">
+                    <div>
+                      <div className={`mb-2 h-3 w-24 rounded ${template.accent}`} />
+                      <div className="h-2 w-20 rounded bg-gray-200" />
+                    </div>
+                    {template.id === "sidebar" && <div className="h-10 w-10 rounded-full bg-gray-200" />}
+                  </div>
+
+                  <div className={template.id === "sidebar" ? "grid grid-cols-[0.75fr_1.25fr] gap-3" : "space-y-4"}>
+                    {template.id === "sidebar" && (
+                      <div className="space-y-2">
+                        <div className={`h-20 rounded ${template.soft}`} />
+                        <div className="h-2 rounded bg-gray-200" />
+                        <div className="h-2 w-4/5 rounded bg-gray-200" />
+                        <div className="h-2 w-3/5 rounded bg-gray-200" />
+                      </div>
+                    )}
+
+                    <div className="space-y-4">
+                      {[0, 1, 2].map((item) => (
+                        <div key={item} className="space-y-2">
+                          <div className={`h-2 w-16 rounded ${template.accent}`} />
+                          <div className="h-2 rounded bg-gray-200" />
+                          <div className="h-2 w-5/6 rounded bg-gray-200" />
+                          {template.id !== "compact" && <div className="h-2 w-2/3 rounded bg-gray-100" />}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="p-4 border-t border-white/20">
-                <h3 className="font-medium text-text-main text-sm">Modern Professional {item}</h3>
-                <p className="text-xs text-text-muted font-light mt-1">Clean & Minimal</p>
+
+              <div className="p-5">
+                <h2 className="text-lg font-bold text-text-main">{template.name}</h2>
+                <p className="mt-2 min-h-12 text-sm leading-6 text-text-muted">{template.description}</p>
+                <Link
+                  to={`/builder?template=${template.id}`}
+                  className={`mt-5 inline-flex rounded-lg px-4 py-2 text-sm font-semibold text-white transition-transform group-hover:-translate-y-0.5 ${template.accent}`}
+                >
+                  Use Template
+                </Link>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

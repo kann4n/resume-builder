@@ -156,3 +156,20 @@ html {
 .transform-style-3d {
   transform-style: preserve-3d;
 }
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  .resume-preview {
+    min-height: auto;
+    width: 100%;
+    padding: 0;
+  }
+}

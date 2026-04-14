@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-white border-t border-gray-100 py-8">
@@ -11,8 +13,8 @@ const Footer = () => {
         </div>
         
         <div className="flex gap-6">
-          <a href="#" className="text-sm text-gray-500 hover:text-primary transition-colors">Privacy</a>
-          <a href="#" className="text-sm text-gray-500 hover:text-primary transition-colors">Terms</a>
+          <Link to="/builder" className="text-sm text-gray-500 hover:text-primary transition-colors">Builder</Link>
+          <Link to="/templates" className="text-sm text-gray-500 hover:text-primary transition-colors">Templates</Link>
           <a href="https://github.com/Munnoi/resume-builder" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 hover:text-primary transition-colors">GitHub</a>
         </div>
       </div>
